@@ -1,12 +1,111 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserDashboard</title>
-</head>
-<body>
-    <h1>UserDashboard</h1>
-    <a href="{% url 'logout' %}">Logout</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'Userdashboard/css/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Complaint Management System</a>
+        <div class="ms-auto">
+          <span class="me-3"
+            >Welcome, <strong id="userName">{{ user.first_name | capfirst }}</strong></span
+          >
+          <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
+            Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row summary-cards">
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Total Complaints</div>
+            <div class="number" id="totalComplaints">8</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Pending</div>
+            <div class="number" id="pendingComplaints">3</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">In Progress</div>
+            <div class="number" id="progressComplaints">2</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Resolved</div>
+            <div class="number" id="resolvedComplaints">3</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end mb-3">
+        <button class="new-complaint-btn btn btn-primary btn-sm p-2 fs-6">
+          + Raise New Complaint
+        </button>
+      </div>
+
+      <!-- My Complaints Table -->
+      <div class="main-content">
+        <h4 class="mb-4">My Complaints</h4>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Complaint ID</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Created On</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="complaintsTable">
+              <tr>
+                <td>CMP108</td>
+                <td>Road Damage</td>
+                <td>
+                  <span class="status-badge status-resolved">Resolved</span>
+                </td>
+                <td>20-Feb-2024</td>
+                <td class="table-actions">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    onclick="viewComplaint('CMP108')"
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Profile Section -->
+      <div class="profile-section mb-4">
+        <h5>Profile Information</h5>
+        <hr />
+        <p><strong>Username:</strong> {{ user.first_name | capfirst }} {{ user.last_name | capfirst }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Role:</strong> {{ userRole }}</p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'Userdashboard/scripts/scripts.js' %}"></script>
+  </body>
 </html>

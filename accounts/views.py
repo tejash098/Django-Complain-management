@@ -11,7 +11,7 @@ def login_view(request):
         if form.is_valid(): # calls authenticate() internally 
             user = form.get_user()  
             login(request, user)
-            UserRole = Profile.objects.get(user = user)
+            UserRole, _ = Profile.objects.get_or_create(user = user)
             if UserRole.role == 'admin':
                 return redirect('AdminDashboard')
             elif UserRole.role == 'user':

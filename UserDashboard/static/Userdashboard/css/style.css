@@ -1,0 +1,75 @@
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.summary-cards {
+  margin: 30px 0;
+}
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.summary-card .number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0d6efd;
+  margin: 10px 0;
+}
+.summary-card .label {
+  color: #6c757d;
+  font-size: 14px;
+}
+.main-content {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+.table-actions .btn {
+  padding: 5px 15px;
+  font-size: 14px;
+}
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.status-progress {
+  background-color: #cfe2ff;
+  color: #084298;
+}
+.status-resolved {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+.new-complaint-btn {
+  background-color: #0d6efd;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.new-complaint-btn:hover {
+  background-color: #0b5ed7;
+}
+.profile-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
