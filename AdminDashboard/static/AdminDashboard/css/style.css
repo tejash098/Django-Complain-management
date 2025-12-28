@@ -1,0 +1,75 @@
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+.navbar {
+  background-color: #212529;
+  color: white;
+}
+.navbar-brand,
+.navbar-text {
+  color: white !important;
+}
+.summary-cards {
+  margin: 30px 0;
+}
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.summary-card .number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #198754;
+  margin: 10px 0;
+}
+.summary-card .label {
+  color: #6c757d;
+  font-size: 14px;
+}
+.main-content {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+.filters-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.status-progress {
+  background-color: #cfe2ff;
+  color: #084298;
+}
+.status-resolved {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+.action-buttons .btn {
+  margin-right: 5px;
+  padding: 5px 12px;
+  font-size: 13px;
+}
+.analytics-chart {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}

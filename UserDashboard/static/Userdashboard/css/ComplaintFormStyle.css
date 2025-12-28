@@ -1,0 +1,136 @@
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  padding: 20px 0;
+}
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.form-header h2 {
+  color: #212529;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.form-header p {
+  color: #6c757d;
+  font-size: 14px;
+}
+.form-label {
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 8px;
+}
+.required {
+  color: #dc3545;
+}
+.form-control,
+.form-select {
+  border-radius: 6px;
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+.error-message {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 5px;
+  display: none;
+}
+.file-upload-wrapper {
+  position: relative;
+}
+.file-upload-label {
+  display: block;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  border: 2px dashed #ced4da;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.file-upload-label:hover {
+  background-color: #e9ecef;
+  border-color: #0d6efd;
+}
+.file-upload-label i {
+  font-size: 24px;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+#fileInput {
+  display: none;
+}
+.file-info {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #6c757d;
+}
+.btn-submit {
+  background-color: #0d6efd;
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-submit:hover {
+  background-color: #0b5ed7;
+}
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+.btn-cancel:hover {
+  background-color: #5c636a;
+  color: white;
+}
+.button-group {
+  margin-top: 30px;
+  text-align: center;
+}
+.success-message {
+  display: none;
+  background-color: #d1e7dd;
+  color: #0f5132;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #badbcc;
+}
+.success-message i {
+  margin-right: 8px;
+}
+.char-counter {
+  font-size: 12px;
+  color: #6c757d;
+  text-align: right;
+  margin-top: 5px;
+}

@@ -32,32 +32,32 @@
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">Total Complaints</div>
-            <div class="number" id="totalComplaints">8</div>
+            <div class="number" id="totalComplaints">{{ totalComplaints }}</div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">Pending</div>
-            <div class="number" id="pendingComplaints">3</div>
+            <div class="number" id="pendingComplaints">{{ pendingComplaints }}</div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">In Progress</div>
-            <div class="number" id="progressComplaints">2</div>
+            <div class="number" id="progressComplaints">{{ inProgressComplaints }}</div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">Resolved</div>
-            <div class="number" id="resolvedComplaints">3</div>
+            <div class="number" id="resolvedComplaints">{{ resolvedComplaints }}</div>
           </div>
         </div>
       </div>
       <div class="text-end mb-3">
-        <button class="new-complaint-btn btn btn-primary btn-sm p-2 fs-6">
+        <a href="{% url 'complaintForm' %}" class="new-complaint-btn btn btn-primary btn-sm p-2 fs-6">
           + Raise New Complaint
-        </button>
+        </a>
       </div>
 
       <!-- My Complaints Table -->
@@ -75,22 +75,23 @@
               </tr>
             </thead>
             <tbody id="complaintsTable">
+              {% for complaint in complaints %}
               <tr>
-                <td>CMP108</td>
-                <td>Road Damage</td>
+                <td>{{ complaint.id }}</td>
+                <td>{{ complaint.category }}</td>
                 <td>
-                  <span class="status-badge status-resolved">Resolved</span>
+                  <span class="fs-6 status-badge status-{{ complaint.status | lower }}">{{ complaint.status | lower }}</span>
                 </td>
-                <td>20-Feb-2024</td>
+                <td>{{ complaint.created_at }}</td>
                 <td class="table-actions">
                   <button
                     class="btn btn-primary btn-sm"
-                    onclick="viewComplaint('CMP108')"
                   >
                     View
                   </button>
                 </td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

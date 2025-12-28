@@ -1,12 +1,153 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminDashboard</title>
-</head>
-<body>
-    <h1>AdminDashboard</h1>
-    <a href="{% url 'logout' %}">Logout</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'AdminDashboard/css/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          >Admin Panel - Complaint Management</a
+        >
+        <div class="ms-auto">
+          <span class="navbar-text me-3"
+            >Admin: <strong id="adminName">{{ request.user.first_name }}</strong></span
+          >
+          <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">
+            Logout
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row summary-cards">
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Total Complaints</div>
+            <div class="number" id="totalComplaints">25</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Pending</div>
+            <div class="number" style="color: #ffc107" id="pendingComplaints">
+              8
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">In Progress</div>
+            <div class="number" style="color: #0d6efd" id="progressComplaints">
+              10
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="summary-card">
+            <div class="label">Resolved</div>
+            <div class="number" style="color: #198754" id="resolvedComplaints">
+              7
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Section -->
+      <!-- <div class="row mb-4">
+        <div class="col-md-12">
+          <div class="analytics-chart">
+            <h5 class="mb-3">Complaint Analytics</h5>
+            <div class="row text-center">
+              <div class="col-md-4">
+                <p class="mb-1"><strong>Resolution Rate</strong></p>
+                <h3 class="text-success">28%</h3>
+              </div>
+              <div class="col-md-4">
+                <p class="mb-1"><strong>Avg Response Time</strong></p>
+                <h3 class="text-primary">2.5 days</h3>
+              </div>
+              <div class="col-md-4">
+                <p class="mb-1"><strong>Today's Complaints</strong></p>
+                <h3 class="text-warning">3</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Filters and Search -->
+      <div class="main-content">
+        <div class="filters-section">
+          <div class="row g-3">
+            <div class="col-md-3">
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                placeholder="Search by ID or User"
+              />
+            </div>
+            <div class="col-md-3">
+              <select
+                class="form-select"
+                id="statusFilter"
+              >
+                <option value="">All Status</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select
+                class="form-select"
+                id="categoryFilter"
+              >
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-secondary w-100">
+                Reset Filters
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="mb-4">All Complaints Management</h4>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="complaintsTable">
+              <!-- Data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'AdminDashboard/scripts/scripts.js' %}"></script>
+  </body>
 </html>
