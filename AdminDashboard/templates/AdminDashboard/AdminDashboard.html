@@ -15,12 +15,11 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"
-          >Admin Panel - Complaint Management</a
-        >
+        <a class="navbar-brand" href="#">Admin Panel - Complaint Management</a>
         <div class="ms-auto">
           <span class="navbar-text me-3"
-            >Admin: <strong id="adminName">{{ request.user.first_name }}</strong></span
+            >Admin:
+            <strong id="adminName">{{ request.user.first_name }}</strong></span
           >
           <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">
             Logout
@@ -34,14 +33,14 @@
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">Total Complaints</div>
-            <div class="number" id="totalComplaints">25</div>
+            <div class="number" id="totalComplaints">{{totalComplaints}}</div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="summary-card">
             <div class="label">Pending</div>
             <div class="number" style="color: #ffc107" id="pendingComplaints">
-              8
+              {{pendingComplaints}}
             </div>
           </div>
         </div>
@@ -49,7 +48,7 @@
           <div class="summary-card">
             <div class="label">In Progress</div>
             <div class="number" style="color: #0d6efd" id="progressComplaints">
-              10
+              {{inProgressComplaints}}
             </div>
           </div>
         </div>
@@ -57,7 +56,7 @@
           <div class="summary-card">
             <div class="label">Resolved</div>
             <div class="number" style="color: #198754" id="resolvedComplaints">
-              7
+              {{resolvedComplaints}}
             </div>
           </div>
         </div>
@@ -99,10 +98,7 @@
               />
             </div>
             <div class="col-md-3">
-              <select
-                class="form-select"
-                id="statusFilter"
-              >
+              <select class="form-select" id="statusFilter">
                 <option value="">All Status</option>
                 <option value="Pending">Pending</option>
                 <option value="In Progress">In Progress</option>
@@ -110,17 +106,12 @@
               </select>
             </div>
             <div class="col-md-3">
-              <select
-                class="form-select"
-                id="categoryFilter"
-              >
+              <select class="form-select" id="categoryFilter">
                 <option value="">All Categories</option>
               </select>
             </div>
             <div class="col-md-3">
-              <button class="btn btn-secondary w-100">
-                Reset Filters
-              </button>
+              <button class="btn btn-secondary w-100">Reset Filters</button>
             </div>
           </div>
         </div>
@@ -140,7 +131,22 @@
               </tr>
             </thead>
             <tbody id="complaintsTable">
-              <!-- Data will be populated by JavaScript -->
+              {% for complaint in complaints %}
+              <tr>
+                <td>{{complaint.id}}</td>
+                <td>{{complaint.user.first_name}}</td>
+                <td>{{complaint.category}}</td>
+                <td>{{complaint.description}}</td>
+                <td>
+                  <span
+                    class="fs-6 status-badge status-{{ complaint.status | lower }}"
+                    >{{ complaint.status | lower }}</span
+                  >
+                </td>
+                <td>{{complaint.created_at | date}}</td>
+                <td><a href="#" class="btn btn-primary">View</a></td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

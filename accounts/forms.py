@@ -10,10 +10,3 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','username', 'email' , 'password1', 'password2']
-
-#todo to restrict the paramete of UserCreationForm (created costum register form)
-#! to be modify
-
-
-# class LoginForm(forms.Form):
-#     username = forms.CharField()
