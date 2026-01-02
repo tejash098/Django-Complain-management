@@ -63,28 +63,68 @@
       </div>
 
       <!-- Analytics Section -->
-      <!-- <div class="row mb-4">
+      <div class="row mb-4">
         <div class="col-md-12">
           <div class="analytics-chart">
-            <h5 class="mb-3">Complaint Analytics</h5>
+            <h5 class="mb-4">Complaint Analytics</h5>
+
             <div class="row text-center">
-              <div class="col-md-4">
+              <div class="col-md-4 mb-3">
                 <p class="mb-1"><strong>Resolution Rate</strong></p>
-                <h3 class="text-success">28%</h3>
+                <h3 class="text-success">{{ resolutionRate }}%</h3>
+                <small class="text-muted">Resolved / Total</small>
               </div>
-              <div class="col-md-4">
-                <p class="mb-1"><strong>Avg Response Time</strong></p>
-                <h3 class="text-primary">2.5 days</h3>
+
+              <div class="col-md-4 mb-3">
+                <p class="mb-1"><strong>Pending Complaints</strong></p>
+                <h3 class="text-warning">{{ pendingComplaints }}</h3>
+                <small class="text-muted">Needs Attention</small>
               </div>
+
+              <div class="col-md-4 mb-3">
+                <p class="mb-1"><strong>New (Last 7 Days)</strong></p>
+                <h3 class="text-primary">{{ recentComplaints }}</h3>
+                <small class="text-muted">Recent Activity</small>
+              </div>
+            </div>
+
+            <!-- Progress Bars -->
+            <hr />
+
+            <div class="row">
               <div class="col-md-4">
-                <p class="mb-1"><strong>Today's Complaints</strong></p>
-                <h3 class="text-warning">3</h3>
+                <p class="mb-1">Pending</p>
+                <div class="progress mb-3">
+                  <div
+                    class="progress-bar bg-warning"
+                    style="width: {{ pendingComplaints|default:0|floatformat:0 }}%"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <p class="mb-1">In Progress</p>
+                <div class="progress mb-3">
+                  <div
+                    class="progress-bar bg-primary"
+                    style="width: {{ inProgressComplaints|default:0|floatformat:0 }}%"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <p class="mb-1">Resolved</p>
+                <div class="progress mb-3">
+                  <div
+                    class="progress-bar bg-success"
+                    style="width: {{ resolvedComplaints|default:0|floatformat:0 }}%"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
-
+      </div>
       <!-- Filters and Search -->
       <div class="main-content">
         <div class="filters-section">
@@ -139,12 +179,18 @@
                 <td>{{complaint.description}}</td>
                 <td>
                   <span
-                    class="fs-6 status-badge status-{{ complaint.status | lower }}"
-                    >{{ complaint.status | lower }}</span
+                    class="fs-6 status-badge status-{{complaint.status|slugify}}"
+                    >{{ complaint.status | title }}</span
                   >
                 </td>
                 <td>{{complaint.created_at | date}}</td>
-                <td><a href="#" class="btn btn-primary">View</a></td>
+                <td>
+                  <a
+                    href="{% url 'complaint_detail' complaint.id %}"
+                    class="btn btn-primary"
+                    >View</a
+                  >
+                </td>
               </tr>
               {% endfor %}
             </tbody>
